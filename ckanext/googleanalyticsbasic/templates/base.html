@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block links %}
+  {{ super() }}
+  {% block googleanalyticsbasic_header %}
+    {{ h.googleanalyticsbasic_header() }}
+  {% endblock %}
+{% endblock %}

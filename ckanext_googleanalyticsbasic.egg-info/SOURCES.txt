@@ -1,0 +1,11 @@
+setup.py
+ckanext/__init__.py
+ckanext/googleanalyticsbasic/__init__.py
+ckanext/googleanalyticsbasic/plugin.py
+ckanext_googleanalyticsbasic.egg-info/PKG-INFO
+ckanext_googleanalyticsbasic.egg-info/SOURCES.txt
+ckanext_googleanalyticsbasic.egg-info/dependency_links.txt
+ckanext_googleanalyticsbasic.egg-info/entry_points.txt
+ckanext_googleanalyticsbasic.egg-info/namespace_packages.txt
+ckanext_googleanalyticsbasic.egg-info/not-zip-safe
+ckanext_googleanalyticsbasic.egg-info/top_level.txt
