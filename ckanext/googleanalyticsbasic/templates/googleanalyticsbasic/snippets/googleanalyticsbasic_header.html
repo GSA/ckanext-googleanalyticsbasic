@@ -1,11 +1,10 @@
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '{{googleanalytics_id_1}}']);
+  {% for googleanalytics_id in googleanalytics_ids %}
+  _gaq.push(['_setAccount', '{{googleanalytics_id}}']);
   _gaq.push(['_setDomainName', 'auto']);
   _gaq.push(['_trackPageview']);
-  _gaq.push(['_setAccount', '{{googleanalytics_id_2}}']);
-  _gaq.push(['_setDomainName', 'auto']);
-  _gaq.push(['_trackPageview']);
+  {% endfor %}
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';

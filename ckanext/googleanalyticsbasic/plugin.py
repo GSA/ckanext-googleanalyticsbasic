@@ -2,7 +2,7 @@ __author__ = 'ykhadilkar'
 import logging
 import ckan.lib.helpers as h
 import ckan.plugins as p
-
+import paste.deploy.converters as converters
 
 log = logging.getLogger('ckanext.googleanalytics-basic')
 
@@ -23,17 +23,14 @@ class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
         See IConfigurable.
 
         '''
-        if 'googleanalytics.id_1' not in config:
-            msg = "Missing googleanalytics.id_1 in config"
+        if 'googleanalytics.ids' not in config:
+            msg = "Missing googleanalytics.ids in config"
             raise GoogleAnalyticsBasicException(msg)
 
-        if 'googleanalytics.id_2' not in config:
-            msg = "Missing googleanalytics.id_2 in config"
-            raise GoogleAnalyticsBasicException(msg)
-        self.googleanalytics_id_1 = config['googleanalytics.id_1']
-        self.googleanalytics_id_2 = config['googleanalytics.id_2']
+        self.googleanalytics_ids = config['googleanalytics.ids'].split()
+
         self.googleanalytics_javascript_url = h.url_for_static(
-                '/scripts/ckanext-googleanalytics.js')
+                    '/scripts/ckanext-googleanalytics.js')
 
     def update_config(self, config):
         '''Change the CKAN (Pylons) environment configuration.
@@ -59,7 +56,6 @@ class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
         templates in this extension, see ITemplateHelpers.
 
         '''
-        data = {'googleanalytics_id_1': self.googleanalytics_id_1,
-                'googleanalytics_id_2': self.googleanalytics_id_2}
+        data = {'googleanalytics_ids': self.googleanalytics_ids}
         return p.toolkit.render_snippet(
             'googleanalyticsbasic/snippets/googleanalyticsbasic_header.html', data)
