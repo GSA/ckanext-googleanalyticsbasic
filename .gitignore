@@ -1,7 +1,10 @@
-*.DS_Store
-__init__.py
-ckanext/__init__.pyc
-ckanext/googleanalyticsbasic/__init__.pyc
-ckanext/googleanalyticsbasic/plugin.pyc
-ckanext_googleanalyticsbasic.egg-info
-ckanext/.DS_Store
+syntax: glob
+*.egg-info
+*.pyc
+*.swp
+*.swo
+*~
+build/
+dist/
+credentials.json
+token.dat
