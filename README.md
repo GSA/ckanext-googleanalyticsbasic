@@ -10,15 +10,13 @@ Installation
 		
 		$ pip install -e  git+https://github.com/ykhadilkar-rei/ckanext-googleanalyticsbasic#egg=ckanext-googleanalyticsbasic
 
-2. Edit your development.ini (or similar) to provide these necessary parameters (you can provide up to 2 ids)
+2. Edit your development.ini (or similar) to provide space separated list of google ids
 		::
   	
-		googleanalytics.id_1 = UA-1010101-1
-  	googleanalytics.id_2 = UA-1010101-1
+		googleanalytics.ids = UA-1010101-1 UA-1010101-2
 
 3. Edit again your configuration ini file to activate the plugin with:
 		::
   	
 		ckan.plugins = googleanalyticsbasic
 
-TODO: Check if second id exist then add ... should not be required field 
