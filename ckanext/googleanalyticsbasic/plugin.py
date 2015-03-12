@@ -1,8 +1,7 @@
-__author__ = 'ykhadilkar'
+__author__ = 'GSA'
 import logging
 import ckan.lib.helpers as h
 import ckan.plugins as p
-import paste.deploy.converters as converters
 
 log = logging.getLogger('ckanext.googleanalytics-basic')
 
@@ -55,7 +54,10 @@ class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
         googleanalytics_header jinja snippet. To be called from the jinja
         templates in this extension, see ITemplateHelpers.
 
+        Using enumerate() to implement multiple trackers support
+        https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced#multipletrackers
+
         '''
-        data = {'googleanalytics_ids': self.googleanalytics_ids}
+        data = {'googleanalytics_ids': enumerate(self.googleanalytics_ids, start=1)}
         return p.toolkit.render_snippet(
             'googleanalyticsbasic/snippets/googleanalyticsbasic_header.html', data)
