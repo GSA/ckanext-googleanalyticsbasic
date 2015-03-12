@@ -8,7 +8,7 @@ Installation
 1. Install the extension as usual, e.g. (from an activated virtualenv)
 		::
 		
-		$ pip install -e  git+https://github.com/ykhadilkar-rei/ckanext-googleanalyticsbasic#egg=ckanext-googleanalyticsbasic
+		$ pip install -e  git+https://github.com/GSA/ckanext-googleanalyticsbasic#egg=ckanext-googleanalyticsbasic
 
 2. Edit your development.ini (or similar) to provide space separated list of google ids
 		::
