@@ -4,11 +4,12 @@
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
+ga_trackers = [];
 {% for idx,googleanalytics_id in googleanalytics_ids %}
-ga('create', '{{googleanalytics_id}}', 'auto', {'name': 'tracker{{idx}}'});
+ga('create', '{{googleanalytics_id}}', 'auto', 'tracker{{idx}}');
 ga('tracker{{idx}}.set', 'anonymizeIp', true);
 ga('tracker{{idx}}.send', 'pageview');
+ga_trackers.push('tracker{{idx}}');
 {% endfor %}
 </script>
 <!-- End Google Analytics -->

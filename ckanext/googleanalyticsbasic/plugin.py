@@ -22,9 +22,12 @@ class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
         See IConfigurable.
 
         '''
+        self.googleanalytics_ids = []
         if 'googleanalytics.ids' not in config:
             msg = "Missing googleanalytics.ids in config"
-            raise GoogleAnalyticsBasicException(msg)
+            log.warn(msg)
+            return
+            # raise GoogleAnalyticsBasicException(msg)
 
         self.googleanalytics_ids = config['googleanalytics.ids'].split()
 
@@ -38,6 +41,8 @@ class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
 
         '''
         p.toolkit.add_template_directory(config, 'templates')
+
+        p.toolkit.add_resource('fanstatic', 'googleanalyticsbasic')
 
     def get_helpers(self):
         '''Return the CKAN 2.0 template helper functions this plugin provides.
@@ -58,6 +63,9 @@ class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
         https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced#multipletrackers
 
         '''
-        data = {'googleanalytics_ids': enumerate(self.googleanalytics_ids, start=1)}
+        data = {
+            'googleanalytics_ids': enumerate(self.googleanalytics_ids, start=1)
+        }
+
         return p.toolkit.render_snippet(
-            'googleanalyticsbasic/snippets/googleanalyticsbasic_header.html', data)
+            'snippets/googleanalyticsbasic_header.html', data)
