@@ -8,3 +8,5 @@ build/
 dist/
 credentials.json
 token.dat
+
+.idea
