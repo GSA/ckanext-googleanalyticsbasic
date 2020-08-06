@@ -27,6 +27,16 @@ class TestScript(helpers.FunctionalTestBase):
                   '.com/analytics.js\',\'ga\');')
 
         assert script in dataset_page
+    
+    def test_trackers_in_use(self):
+        self.app = self._get_test_app()
+        dataset_page = self.app.get('/dataset')
+
+        script = "ga('create', 'UA-1010101-1', 'auto', 'tracker1');"
+        assert script in dataset_page
+
+        script = "ga('create', 'UA-1010101-2', 'auto', 'tracker2');"
+        assert script in dataset_page
 
     def test_ga_js_script_added_to_fanstatic_present(self):
         self.app = self._get_test_app()
