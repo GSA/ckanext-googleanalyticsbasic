@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/GSA/ckanext-googleanalyticsbasic.svg?style=svg)](https://circleci.com/gh/GSA/ckanext-googleanalyticsbasic)
+
+
 ckanext-googleanalyticsbasic
 ============================
 
