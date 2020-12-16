@@ -38,7 +38,7 @@ pip install setuptools~=45.0
 if [ $CKANVERSION == '2.9' ]
 then
   # Faker 5.x requires Python 3, pathlib missing
-  pip install Faker~=4.18.0
+  pip install Faker~=4.17.0
 fi
 
 python setup.py develop
