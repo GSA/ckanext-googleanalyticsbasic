@@ -10,7 +10,8 @@ jobs:
     steps:
       - checkout
       - run: |-
-          echo 2.7.18 > .python-version
+          pyenv install "$PYTHONVERSION"
+          pyenv local "$PYTHONVERSION"
           pip install -U pip
       - run:
           name: install
