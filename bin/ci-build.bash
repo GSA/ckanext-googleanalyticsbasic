@@ -17,14 +17,13 @@ ls -la
 git clone --branch inventory https://github.com/GSA/ckan.git
 cd ckan
 
-if [ $CKANVERSION == '2.8' ]
-then
-	git checkout datagov-newcatalog
-elif [ $CKANVERSION == '2.3' ]
+if [ $CKANVERSION == '2.3' ]
 then
 	git checkout datagov
 	echo "Fix debug css"
 	cp ckan/public/base/css/main.css ckan/public/base/css/main.debug.css
+else
+	git checkout "$CKANVERSION"
 fi
 
 echo "-----------------------------------------------------------------"
