@@ -10,6 +10,8 @@ jobs:
     steps:
       - checkout
       - run: |-
+          # update pyenv build
+          cd /opt/circleci/.pyenv/plugins/python-build/../.. && git pull && cd -
           pyenv install "$PYTHONVERSION"
           pyenv local "$PYTHONVERSION"
           pip install -U pip
