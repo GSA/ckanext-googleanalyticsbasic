@@ -5,8 +5,8 @@ jobs:
     machine:
       image: circleci/classic:201708-01
     environment:
-      CKANVERSION=2.9
-      PYTHONVERSION=2.7.18
+      - CKANVERSION=2.9
+      - PYTHONVERSION=2.7.18
     steps:
       - checkout
       - run: |-
@@ -22,7 +22,7 @@ jobs:
     machine:
       image: circleci/classic:201708-01
     environment:
-      CKANVERSION=2.8
+      - CKANVERSION=2.8
     steps:
       - checkout
       - run:
@@ -36,7 +36,7 @@ jobs:
     machine:
       image: circleci/classic:201708-01
     environment:
-      CKANVERSION=2.3
+      - CKANVERSION=2.3
     steps:
       - checkout
       - run:
