@@ -17,9 +17,6 @@ ls -la
 git clone --branch inventory https://github.com/GSA/ckan.git
 cd ckan
 
-# upgrade pip
-pip install -U pip
-
 if [ $CKANVERSION == '2.3' ]
 then
 	git checkout datagov
@@ -36,6 +33,12 @@ pip install wheel
 
 # https://github.com/GSA/ckanext-datajson/issues/61
 pip install setuptools~=45.0
+
+# version hacks
+if [ $CKANVERSION == '2.9' ]
+then
+  pip install pathlib
+fi
 
 python setup.py develop
 cp ./ckan/public/base/css/main.css ./ckan/public/base/css/main.debug.css

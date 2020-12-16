@@ -6,8 +6,11 @@ jobs:
       image: circleci/classic:201708-01
     environment:
       CKANVERSION=2.9
+      PYTHONVERSION=2.7.18
     steps:
       - checkout
+      - run: |-
+          echo 2.7.18 > .python-version
       - run:
           name: install
           command: bin/ci-build.bash
