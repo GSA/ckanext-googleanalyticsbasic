@@ -17,6 +17,9 @@ ls -la
 git clone --branch inventory https://github.com/GSA/ckan.git
 cd ckan
 
+# upgrade pip
+pip install -U pip
+
 if [ $CKANVERSION == '2.3' ]
 then
 	git checkout datagov
