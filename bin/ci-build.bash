@@ -29,6 +29,7 @@ fi
 echo "-----------------------------------------------------------------"
 echo "Installing Python dependencies..."
 
+pip install pip==20.3.3
 pip install wheel
 
 # https://github.com/GSA/ckanext-datajson/issues/61
