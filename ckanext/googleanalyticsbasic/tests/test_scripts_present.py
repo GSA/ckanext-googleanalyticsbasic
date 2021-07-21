@@ -27,7 +27,7 @@ class TestScript(helpers.FunctionalTestBase):
                   '.com/analytics.js\',\'ga\');')
 
         assert script in dataset_page
-    
+
     def test_trackers_in_use(self):
         self.app = self._get_test_app()
         dataset_page = self.app.get('/dataset')
@@ -43,6 +43,6 @@ class TestScript(helpers.FunctionalTestBase):
 
         dataset_page = self.app.get('/dataset')
 
-        assert all(i in dataset_page for i in [
-         'src="/fanstatic/googleanalyticsbasic/',
-         '/googleanalyticsbasic_events.js"></script>'])
+        assert all(i in dataset_page for i in
+                   ['src="/fanstatic/googleanalyticsbasic/',
+                    '/googleanalyticsbasic_events.js"></script>'])

@@ -32,7 +32,7 @@ class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
         self.googleanalytics_ids = config['googleanalytics.ids'].split()
 
         self.googleanalytics_javascript_url = h.url_for_static(
-                    '/scripts/ckanext-googleanalytics.js')
+            '/scripts/ckanext-googleanalytics.js')
 
     def update_config(self, config):
         '''Change the CKAN (Pylons) environment configuration.

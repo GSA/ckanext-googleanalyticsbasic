@@ -1,6 +1,5 @@
-CKAN_VERSION ?= 2.8
+CKAN_VERSION ?= 2.9
 COMPOSE_FILE ?= docker-compose.yml
-COMPOSE_LEGACY_FILE ?= docker-compose.legacy.yml
 
 build: ## Build the docker containers
 	CKAN_VERSION=$(CKAN_VERSION) docker-compose -f $(COMPOSE_FILE) build
@@ -16,10 +15,6 @@ clean: ## Clean workspace and containers
 
 test: ## Run tests in a new container
 	CKAN_VERSION=$(CKAN_VERSION) docker-compose -f $(COMPOSE_FILE) run --rm app ./test.sh
-
-test-legacy: ## Run legacy nose tests in an existing container
-	@# TODO wait for CKAN to be up; use docker-compose run instead
-	docker-compose -f docker-compose.legacy.yml exec ckan /bin/bash -c "nosetests --ckan --with-pylons=src/ckan/test-catalog-next.ini src_extensions/googleanalyticsbasic/ckanext/googleanalyticsbasic/tests/nose"
 
 up: ## Start the containers
 	CKAN_VERSION=$(CKAN_VERSION) docker-compose -f $(COMPOSE_FILE) up
