@@ -31,23 +31,4 @@ while ! ckan_wrapper --plugin=ckan db init; do
   sleep 5
 done
 
-
-HOST=db
-DB_NAME=ckan
-DB_USER=ckan
-PASS=ckan
-
-#PGPASSWORD=${PASS} psql -h $HOST -U $DB_USER -d $DB_NAME -c "create EXTENSION postgis;"
-#PGPASSWORD=${PASS} psql -h $HOST -U $DB_USER -d $DB_NAME -f ./postgis.sql
-#PGPASSWORD=${PASS} psql -h $HOST -U $DB_USER -d $DB_NAME -f ./spatial_ref_sys.sql
-#PGPASSWORD=${PASS} psql -h $HOST -U $DB_USER -d $DB_NAME -c "drop extension IF EXISTS postgis cascade;"
-#PGPASSWORD=${PASS} psql -h $HOST -U $DB_USER -d $DB_NAME -c "DROP TABLE spatial_ref_sys CASCADE;"
-#PGPASSWORD=${PASS} psql -h $HOST -U $DB_USER -d $DB_NAME -c "drop EXTENSION PostGIS;"
-#PGPASSWORD=${PASS} psql -h $HOST -U $DB_USER -d $DB_NAME -f /usr/local/share/postgresql/contrib/postgis-2.5/postgis.sql
-
-#ckan_wrapper --plugin=ckan db clean
-
-ckan_wrapper --plugin=ckanext-harvest harvester initdb
-ckan_wrapper --plugin=ckanext-spatial spatial initdb
-
 pytest --ckan-ini=test.ini --cov=ckanext.googleanalyticsbasic --disable-warnings ckanext/googleanalyticsbasic/tests/

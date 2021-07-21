@@ -1,9 +1,10 @@
+from builtins import object
 from ckanext.googleanalyticsbasic.plugin \
     import GoogleAnalyticsBasicPlugin as GA
 import inspect
 
 
-class TestPlugin():
+class TestPlugin(object):
 
     def test_configure_ids(self):
         config = {'googleanalytics.ids': 'UA-TEST-1 UA-TEST-2'}
