@@ -22,11 +22,7 @@ test-legacy: ## Run legacy nose tests in an existing container
 	docker-compose -f docker-compose.legacy.yml exec ckan /bin/bash -c "nosetests --ckan --with-pylons=src/ckan/test-catalog-next.ini src_extensions/googleanalyticsbasic/ckanext/googleanalyticsbasic/tests/nose"
 
 up: ## Start the containers
-ifeq ($(CKAN_VERSION), 2.8)
-	CKAN_VERSION=$(CKAN_VERSION) docker-compose -f $(COMPOSE_LEGACY_FILE) up
-else
 	CKAN_VERSION=$(CKAN_VERSION) docker-compose -f $(COMPOSE_FILE) up
-endif
 
 
 .DEFAULT_GOAL := help
