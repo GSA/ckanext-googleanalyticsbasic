@@ -14,24 +14,9 @@ jobs:
       - run:
           name: test
           command: bin/ci-run.sh
-  build_ckan_23:
-    working_directory: ~/ckanext-googleanalyticsbasic
-    machine:
-      image: circleci/classic:201708-01
-    environment:
-      CKANVERSION=2.3
-    steps:
-      - checkout
-      - run:
-          name: install
-          command: bin/ci-build.bash
-      - run:
-          name: test
-          command: bin/ci-run.sh
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build_ckan_28
-      - build_ckan_23
