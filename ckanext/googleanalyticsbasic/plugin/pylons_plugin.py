@@ -7,6 +7,7 @@ import ckan.plugins as p
 
 log = logging.getLogger('ckanext.googleanalytics-basic')
 
+
 class MixinPlugin(object):
 
     def configure(self, config):
