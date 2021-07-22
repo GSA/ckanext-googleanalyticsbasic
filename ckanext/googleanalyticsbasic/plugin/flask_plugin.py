@@ -4,6 +4,7 @@ Mixin for Flask-specific functionality. This aides the migration between Pylons 
 import logging
 import ckan.lib.helpers as h
 import ckan.plugins as p
+import flask
 
 log = logging.getLogger('ckanext.googleanalytics-basic')
 
@@ -25,8 +26,11 @@ class MixinPlugin(object):
 
         self.googleanalytics_ids = config['googleanalytics.ids'].split()
 
-        self.googleanalytics_javascript_url = h.url_for_static(
-            '/scripts/ckanext-googleanalytics.js')
+        app = flask.Flask(__name__)
+        app.config['SERVER_NAME'] = "app"
+        with app.app_context(), app.test_request_context():
+            self.googleanalytics_javascript_url = h.url_for_static(
+                '/scripts/ckanext-googleanalytics.js')
 
     # IConfigurer
     def update_config(self, config):

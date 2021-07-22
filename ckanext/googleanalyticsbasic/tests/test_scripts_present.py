@@ -1,3 +1,4 @@
+import six
 try:
     from ckan.tests import helpers
 except ImportError:
@@ -5,6 +6,9 @@ except ImportError:
 
 
 class TestScript(helpers.FunctionalTestBase):
+
+    def setup(self):
+        helpers.reset_db()
 
     def test_fed_script_present(self):
         self.app = self._get_test_app()
@@ -43,6 +47,11 @@ class TestScript(helpers.FunctionalTestBase):
 
         dataset_page = self.app.get('/dataset')
 
-        assert all(i in dataset_page for i in
-                   ['src="/fanstatic/googleanalyticsbasic/',
-                    '/googleanalyticsbasic_events.js"></script>'])
+        if six.PY2:
+            assert all(i in dataset_page for i in
+                       ['src="/fanstatic/googleanalyticsbasic/',
+                        '/googleanalyticsbasic_events.js"></script>'])
+        else:
+            assert all(i in dataset_page for i in
+                       ['<script src="/webassets/googleanalyticsbasic'
+                        '/events.js?11759afa" type="text/javascript"></script>'])
