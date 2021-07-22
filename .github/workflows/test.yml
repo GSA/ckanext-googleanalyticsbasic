@@ -52,19 +52,16 @@ jobs:
     - name: Install dependency (common)
       run: |
         # apk add geos-dev
+        pip install -r dev-requirements.txt
         pip install -e .
     - name: Setup extension (CKAN >= 2.9)
       if: ${{ matrix.ckan-version != '2.7' && matrix.ckan-version != '2.8' }}
       run: |
         ckan -c test.ini db init
-        ckan -c test.ini harvester initdb
-        ckan -c test.ini spatial initdb
     - name: Setup extension (CKAN < 2.9)
       if: ${{ matrix.ckan-version == '2.8' }}
       run: |
         paster --plugin=ckan db init -c test.ini
-        paster --plugin=ckanext-harvest harvester initdb -c test.ini
-        paster --plugin=ckanext-spatial spatial initdb -c test.ini
     - name: Run tests
       run: pytest --ckan-ini=test.ini --cov=ckanext.googleanalyticsbasic --cov-fail-under=${CODE_COVERAGE_THRESHOLD_REQUIRED} --disable-warnings ckanext/googleanalyticsbasic/tests
 
