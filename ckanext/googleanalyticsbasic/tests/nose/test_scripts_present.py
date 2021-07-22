@@ -12,7 +12,7 @@ class TestScript(helpers.FunctionalTestBase):
         dataset_page = self.app.get('/dataset')
 
         assert ('<script id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/'
-                'Universal-Federated-Analytics-Min.js?agency=GSA"></script>') \
+                'Universal-Federated-Analytics-Min.js?agency=GSA&subagency=TTS"></script>') \
             in dataset_page
 
     def test_ga_script_present(self):
