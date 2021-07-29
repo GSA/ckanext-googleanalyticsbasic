@@ -1,3 +1,4 @@
+import six
 try:
     from ckan.tests import helpers
 except ImportError:
@@ -6,13 +7,16 @@ except ImportError:
 
 class TestScript(helpers.FunctionalTestBase):
 
+    def setup(self):
+        helpers.reset_db()
+
     def test_fed_script_present(self):
         self.app = self._get_test_app()
 
         dataset_page = self.app.get('/dataset')
 
         assert ('<script id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/'
-                'Universal-Federated-Analytics-Min.js?agency=GSA"></script>') \
+                'Universal-Federated-Analytics-Min.js?agency=GSA&subagency=TTS"></script>') \
             in dataset_page
 
     def test_ga_script_present(self):
@@ -27,7 +31,7 @@ class TestScript(helpers.FunctionalTestBase):
                   '.com/analytics.js\',\'ga\');')
 
         assert script in dataset_page
-    
+
     def test_trackers_in_use(self):
         self.app = self._get_test_app()
         dataset_page = self.app.get('/dataset')
@@ -43,6 +47,11 @@ class TestScript(helpers.FunctionalTestBase):
 
         dataset_page = self.app.get('/dataset')
 
-        assert all(i in dataset_page for i in [
-         'src="/fanstatic/googleanalyticsbasic/',
-         '/googleanalyticsbasic_events.js"></script>'])
+        if six.PY2:
+            assert all(i in dataset_page for i in
+                       ['src="/fanstatic/googleanalyticsbasic/',
+                        '/googleanalyticsbasic_events.js"></script>'])
+        else:
+            assert all(i in dataset_page for i in
+                       ['<script src="/webassets/googleanalyticsbasic'
+                        '/events.js?11759afa" type="text/javascript"></script>'])

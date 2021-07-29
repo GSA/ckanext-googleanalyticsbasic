@@ -70,7 +70,7 @@ python setup.py develop
 
 echo "Moving test.ini into a subdir..."
 mkdir subdir
-mv test.ini subdir
+mv test-legacy.ini subdir
 
 echo "ci-build.bash is done."
 

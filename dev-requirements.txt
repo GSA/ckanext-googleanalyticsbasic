@@ -1,0 +1,6 @@
+flake8
+future
+pycodestyle
+pytest
+pytest-ckan
+pytest-cov
