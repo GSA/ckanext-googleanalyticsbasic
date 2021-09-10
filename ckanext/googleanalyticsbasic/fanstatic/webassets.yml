@@ -1,5 +1,0 @@
-js:
-  filters: rjsmin # preprocessor for files. Optional
-  output: googleanalyticsbasic/events.js
-  contents:
-    - googleanalyticsbasic_events.js
