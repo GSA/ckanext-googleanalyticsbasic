@@ -9,6 +9,7 @@
 
 {% block body_extras %}
   {{ super() }}
+  {% asset 'base/vendor/jquery.js' %}
   {% asset 'googleanalyticsbasic/js' %}
   <input type="hidden" data-module="googleanalyticsbasic_events" />
 {% endblock %}
