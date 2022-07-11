@@ -20,7 +20,7 @@ setup(
     keywords='',
     author='Data.gov',
     author_email='datagovhelp@gsa.gov',
-    url='data.gov',
+    url='https://github.com/GSA/ckanext-googleanalyticsbasic',
     license='',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     namespace_packages=['ckanext', 'ckanext.googleanalyticsbasic'],
