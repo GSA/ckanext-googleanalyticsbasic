@@ -1,4 +1,12 @@
 from setuptools import setup, find_packages
+from codecs import open  # To use a consistent encoding
+from os import path
+
+here = path.abspath(path.dirname(__file__))
+
+# Get the long description from the relevant file
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 version = '0.1'
 
@@ -6,12 +14,13 @@ setup(
     name='ckanext-googleanalyticsbasic',
     version=version,
     description="Basic extension to add google analytics tracking code in page header",
-    long_description='''
-    ''',
-    classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+    long_description=long_description,
+    classifiers=[
+        'Programming Language :: Python :: 3'
+    ],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     keywords='',
-    author='Yatin Khadilkar',
-    author_email='ykhadilkar@reisys.com',
+    author='Data.gov',
+    author_email='datagovhelp@gsa.gov',
     url='data.gov',
     license='',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
@@ -21,6 +30,8 @@ setup(
     install_requires=[
         # -*- Extra requirements: -*-
     ],
+    setup_requires=['wheel'],
+
     entry_points="""
         [ckan.plugins]
         googleanalyticsbasic=ckanext.googleanalyticsbasic.plugin:GoogleAnalyticsBasicPlugin""",
