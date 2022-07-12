@@ -1,5 +1,5 @@
 [![Github Actions](https://github.com/GSA/ckanext-googleanalyticsbasic/actions/workflows/test.yml/badge.svg)](https://github.com/GSA/ckanext-googleanalyticsbasic/actions)
-[![CircleCI](https://circleci.com/gh/GSA/ckanext-googleanalyticsbasic.svg?style=svg)](https://circleci.com/gh/GSA/ckanext-googleanalyticsbasic)
+[![PyPI version](https://badge.fury.io/py/ckanext-googleanalyticsbasic.svg)](https://badge.fury.io/py/ckanext-googleanalyticsbasic)
 
 
 ckanext-googleanalyticsbasic
