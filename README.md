@@ -30,13 +30,12 @@ This extension is compatible with these versions of CKAN.
 
 CKAN version | Compatibility
 ------------ | -------------
-<=2.7        | no
-2.8          | yes
-2.9          | [complete](https://github.com/GSA/datagov-ckan-multi/issues/570)
+<=2.8        | no
+2.9          | yes
 
 ## Tests
 
-All the tests live in the [/ckanext/geodatagov/tests](/ckanext/geodatagov/tests) folder. After each commit, via the [CircleCI config](https://github.com/GSA/ckanext-geodatagov/blob/master/.circleci/config.yml), this tests will [run in CircleCI](https://circleci.com/gh/GSA/ckanext-geodatagov) with CKAN 2.3 (custom GSA fork) and CKAN 2.8.  The CircleCI tests were not retained, but may be revisited in the future.
+All the tests live in the [/ckanext/geodatagov/tests](/ckanext/geodatagov/tests) folder.
 
 ## Using the Docker Dev Environment
 
@@ -59,7 +58,7 @@ To docker exec into the CKAN image, run:
 ### Testing
 
 They follow the guidelines for [testing CKAN
-extensions](https://docs.ckan.org/en/2.8/extensions/testing-extensions.html#testing-extensions).
+extensions](https://docs.ckan.org/en/2.9/extensions/testing-extensions.html#testing-extensions).
 
 To run the extension tests, start the containers with `make up`, then:
 
@@ -71,13 +70,7 @@ Lint the code.
 
 ### Matrix builds
 
-The existing development environment assumes a full catalog.data.gov test setup. This makes
-it difficult to develop and test against new versions of CKAN (or really any
-dependency) because everything is tightly coupled and would require us to
-upgrade everything at once which doesn't really work. A new make target
-`test-new` is introduced with a new docker-compose file.
-
-The "new" development environment drops as many dependencies as possible. It is
+The development environment drops as many dependencies as possible. It is
 not meant to have feature parity with
 [GSA/catalog.data.gov](https://github.com/GSA/catalog.data.gov/). Tests should
 mock external dependencies where possible.
@@ -86,5 +79,4 @@ In order to support multiple versions of CKAN, or even upgrade to new versions
 of CKAN, we support development and testing through the `CKAN_VERSION`
 environment variable.
 
-    $ make CKAN_VERSION=2.8 test
     $ make CKAN_VERSION=2.9 test

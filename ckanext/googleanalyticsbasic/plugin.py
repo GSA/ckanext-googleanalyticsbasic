@@ -1,23 +1,51 @@
-__author__ = 'GSA'
+import flask
+import logging
 import ckan.plugins as p
+import ckan.lib.helpers as h
 
-try:
-    p.toolkit.requires_ckan_version("2.9")
-except p.toolkit.CkanVersionException:
-    from ckanext.googleanalyticsbasic.plugin.pylons_plugin import MixinPlugin
-else:
-    from ckanext.googleanalyticsbasic.plugin.flask_plugin import MixinPlugin
+__author__ = 'GSA'
+
+log = logging.getLogger('ckanext.googleanalytics-basic')
+
+p.toolkit.requires_ckan_version("2.9")
 
 
 class GoogleAnalyticsBasicException(Exception):
     pass
 
 
-class GoogleAnalyticsBasicPlugin(MixinPlugin, p.SingletonPlugin):
+class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
     p.implements(p.IConfigurable, inherit=True)
     p.implements(p.IRoutes, inherit=True)
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.ITemplateHelpers)
+
+    def configure(self, config):
+        '''Load config settings for this extension from config file.
+
+        See IConfigurable.
+
+        '''
+        self.googleanalytics_ids = []
+        if 'googleanalytics.ids' not in config:
+            msg = "Missing googleanalytics.ids in config"
+            log.warn(msg)
+            return
+            # raise GoogleAnalyticsBasicException(msg)
+
+        self.googleanalytics_ids = config['googleanalytics.ids'].split()
+
+        app = flask.Flask(__name__)
+        app.config['SERVER_NAME'] = "app"
+        with app.app_context(), app.test_request_context():
+            self.googleanalytics_javascript_url = h.url_for_static(
+                '/scripts/ckanext-googleanalytics.js')
+
+    # IConfigurer
+    def update_config(self, config):
+        p.toolkit.add_template_directory(config, 'templates')
+        p.toolkit.add_public_directory(config, 'public')
+        p.toolkit.add_resource('fanstatic', 'googleanalyticsbasic')
 
     def get_helpers(self):
         '''Return the CKAN 2.0 template helper functions this plugin provides.

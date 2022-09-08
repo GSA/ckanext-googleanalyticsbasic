@@ -1,12 +1,6 @@
 """
 Mixin for Flask-specific functionality. This aides the migration between Pylons and Flask.
 """
-import logging
-import ckan.lib.helpers as h
-import ckan.plugins as p
-import flask
-
-log = logging.getLogger('ckanext.googleanalytics-basic')
 
 
 class MixinPlugin(object):

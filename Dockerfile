@@ -1,7 +1,5 @@
-ARG CKAN_VERSION=2.8
+ARG CKAN_VERSION=2.9
 FROM openknowledge/ckan-dev:${CKAN_VERSION}
-
-# RUN apk add geos-dev proj proj-util proj-dev
 
 COPY . /app
 WORKDIR /app
