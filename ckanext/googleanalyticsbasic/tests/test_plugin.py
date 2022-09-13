@@ -1,4 +1,3 @@
-from builtins import object
 from ckanext.googleanalyticsbasic.plugin \
     import GoogleAnalyticsBasicPlugin as GA
 import inspect
