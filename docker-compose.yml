@@ -29,7 +29,7 @@ services:
       - .:/srv/app/src_extensions
       - ckan_storage:/var/lib/ckan
   db:
-    image: ckan/ckan-postgres-dev:${CKAN_VERSION}
+    image: ckan/ckan-postgres-dev:2.9
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -46,7 +46,7 @@ services:
   redis:
     image: redis:alpine
   solr:
-    image: ckan/ckan-solr-dev:${CKAN_VERSION}
+    image: ckan/ckan-solr-dev:2.9
     ports:
       - "8983:8983"
 

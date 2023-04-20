@@ -16,7 +16,6 @@ class GoogleAnalyticsBasicException(Exception):
 
 class GoogleAnalyticsBasicPlugin(p.SingletonPlugin):
     p.implements(p.IConfigurable, inherit=True)
-    p.implements(p.IRoutes, inherit=True)
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.ITemplateHelpers)
 
