@@ -28,10 +28,11 @@ Installation
 
 This extension is compatible with these versions of CKAN.
 
-CKAN version | Compatibility
------------- | -------------
-<=2.8        | no
-2.9          | yes
+CKAN version  | Compatibility
+------------- | -------------
+<=2.8         | no
+2.9           | yes
+2.10          | yes
 
 ## Tests
 
@@ -58,7 +59,7 @@ To docker exec into the CKAN image, run:
 ### Testing
 
 They follow the guidelines for [testing CKAN
-extensions](https://docs.ckan.org/en/2.9/extensions/testing-extensions.html#testing-extensions).
+extensions](https://docs.ckan.org/en/2.10/extensions/testing-extensions.html#testing-extensions).
 
 To run the extension tests, start the containers with `make up`, then:
 
@@ -79,4 +80,4 @@ In order to support multiple versions of CKAN, or even upgrade to new versions
 of CKAN, we support development and testing through the `CKAN_VERSION`
 environment variable.
 
-    $ make CKAN_VERSION=2.9 test
+    $ make CKAN_VERSION=2.10 test
